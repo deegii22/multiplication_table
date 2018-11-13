@@ -5,6 +5,13 @@ const primes = require('./primes');
 
 describe('Multiplication table for prime primes', function() {
     describe('#isPrimeNumber()', function() {
+        it('should throw an error if passed value is not integer or not positive', function () {
+            assert.throws(primes.isPrimeNumber, Error, "You must input a positive integer");
+            assert.throws(function () { primes.isPrimeNumber(true) });
+            assert.throws(function () { primes.isPrimeNumber(2.5) });
+            assert.throws(function () { primes.isPrimeNumber(-1) });
+        });
+
         it('should return if passed value is prime number or not', function(){
             assert.equal(primes.isPrimeNumber(5), true);
             assert.equal(primes.isPrimeNumber(17), true);

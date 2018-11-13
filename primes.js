@@ -3,10 +3,14 @@
 // function to check if passed value is prime number or not.
 exports.isPrimeNumber = function(n){
 
+    if (typeof n !== 'number' || n % 1 !== 0 || n <= 0) {
+        throw new Error("You must enter a positive integer")
+    }
+
     if(n < 2) return false;
 
     for(var i = 2; i <= Math.sqrt(n); i++){
-        if(n%i == 0){
+        if(n % i == 0){
             return false;
         }
     }
@@ -24,7 +28,7 @@ exports.products = function(){
     var j = 2;
 
     // 2d array to store products of prime numbers.
-    var values = new Array(num+1).fill(0).map(n => new Array(num+1).fill(''));
+    var values = new Array(num+1).fill('').map(n => new Array(num+1).fill(''));
 
     // initial value of array because finding prime number is starts with 3.
     values[0][1] = values[1][0] = 2;
@@ -34,13 +38,13 @@ exports.products = function(){
         if(exports.isPrimeNumber(i)){
             values[j][0] = values[0][j] = i;
 
-            for(let k=1; k<=j; k++){
-                values[j][k] = values[k][j] = values[k][0]*i;
+            for(let k = 1; k <= j; k++){
+                values[j][k] = values[k][j] = values[k][0] * i;
             }
 
             j++;
         }
-        i+=2;
+        i += 2;
     }
     
     return values;
@@ -58,15 +62,15 @@ exports.printNumbers = function(values){
     // variable that calculates most long number of passed arrays.
     var max = values[lastNum][values[lastNum-1].length-1].toString().length;
 
-    for(let i=0;i<values.length;i++){
-        for(let j=0;j<values[i].length;j++){
+    for(let i = 0; i < values.length; i++){
+        for(let j = 0; j < values[i].length; j++){
 
             // padding size of number
             var diff = max - values[i][j].toString().length;
-            for(let k=0;k<diff;k++){
+            for(let k = 0; k < diff; k++){
                 res += ' '; 
             }
-            res+=values[i][j] + ' '
+            res += values[i][j] + ' '
         }
         res += '\n';
     }
