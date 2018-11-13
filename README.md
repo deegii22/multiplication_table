@@ -1,10 +1,10 @@
 # Multiplication table
 Program that prints out a multiplication table of the first 10 prime number.
 
-# External dependency
+## External dependency
 - Mocha test
 
-# Instruction
+## Instruction
 
 - npm install - to install dependency which is Mocha.
 
