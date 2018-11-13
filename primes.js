@@ -48,8 +48,6 @@ exports.products = function(){
     }
     
     return values;
-
-
 }
 
 
